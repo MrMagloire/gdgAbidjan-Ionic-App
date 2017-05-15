@@ -1,2 +1,8 @@
-page-cellule {
+.ios, .md{
+    page-cellule {
+        ion-card{
+            margin: 10px 10px 10px 10px;
+            border: gray 2px solid;
+        }
+    }
 }

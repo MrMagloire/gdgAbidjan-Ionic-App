@@ -7,23 +7,27 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card ion-item *ngFor="let cellule of cellules">
-    <ion-card-header>
-      {{cellule.title}}
-    </ion-card-header>
-    <ion-card-content>
-      <ion-row>
-        <ion-col text-center>
-          <img src="./assets/img/{{cellule.logo}}">
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col text-center>
-          {{cellule.responsableLastName}} {{cellule.responsableFirstName}}
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
-  <img src="./assets/img/logo.png">
+<ion-content overflow-scroll="false" padding>
+  <ion-list no-lines>
+    <ion-card ion-item *ngFor="let cellule of cellules">
+      <ion-card-header>
+        {{cellule.title}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col text-center>
+            <img src="./assets/img/{{cellule.logo}}">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            Responsable : <br>
+            <b>{{cellule.responsableLastName}} {{cellule.responsableFirstName}}</b>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <br/><br/><br/>
+    <img src="./assets/img/googletech.png">
+  </ion-list>
 </ion-content>

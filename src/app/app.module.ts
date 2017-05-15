@@ -8,12 +8,14 @@ import { ListPage } from '../pages/list/list';
 
 // Mes pages
 import { CellulePage } from '../pages/cellule/cellule';
+import { Discussion } from '../pages/discussion/discussion';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -30,19 +32,22 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     ListPage,
-    CellulePage
+    CellulePage,
+    Discussion
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
-    CellulePage
+    CellulePage,
+    Discussion
   ],
   providers: [
     StatusBar,
