@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedCellule.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+
+  <ion-card>
+    <img src="./assets/img/{{selectedCellule.logoDesc}}">
+    <div class="card-subtitle">Gdg Abidjan</div>
+  </ion-card>
+  <ion-card>
+    <ion-card-header text-center>
+      <ion-icon ios="ios-browsers" md="md-browsers" item-left large></ion-icon>
+      <b><u>Description de la cellule</u></b>
+    </ion-card-header>
+    <ion-card-content text-left>
+      <p>{{selectedCellule.celluleDescript}}</p>
+    </ion-card-content>
+    By {{selectedCellule.responsableLastName}} {{selectedCellule.responsableFirstName}}
+  </ion-card>
+  <img src="./assets/img/logo.png">
+</ion-content>

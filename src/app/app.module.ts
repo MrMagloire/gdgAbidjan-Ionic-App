@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 // Mes pages
 import { CellulePage } from '../pages/cellule/cellule';
 import { Discussion } from '../pages/discussion/discussion';
+import { VoirplusPage } from '../pages/voirplus/voirplus';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     HomePage,
     ListPage,
     CellulePage,
-    Discussion
+    Discussion,
+    VoirplusPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ export const firebaseConfig = {
     HomePage,
     ListPage,
     CellulePage,
-    Discussion
+    Discussion,
+    VoirplusPage
   ],
   providers: [
     StatusBar,

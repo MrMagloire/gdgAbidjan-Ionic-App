@@ -3,29 +3,29 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Discussion</ion-title>
+    <ion-title>Nos echanges</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content overflow-scroll="false" text-center>
+<ion-content overflow-scroll="false" text-center padding>
 
   <ion-row class="wrapper">
   </ion-row>
 
-  <ion-input class="message" type="text" value="" placeholder="Votre message"></ion-input>
+  <ion-input class="message" type="text" value="" placeholder="Votre message" ng-bind-html="transform()"></ion-input>
 
   <ion-list>
     <ion-item class="initModal">
       <ion-label fixed>Username</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" (keypress)="transform()" id="username"></ion-input>
     </ion-item>
   </ion-list>
-
+  <button ion-button (click)="transform()" id="button2">Dis bonjour</button>
   <ul>
-    <li class="text" *ngFor="let item of messages | async">
+    <!--<li class="text" *ngFor="let item of messages | async">
       {{item.$value}}
-    </li>
+    </li>-->
   </ul>
 
 </ion-content>
