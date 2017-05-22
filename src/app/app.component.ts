@@ -1,7 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+// Firebase Auth
+// import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+// import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+
+// Creation d'une varible pour auth google
+// var provider = new firebase.auth.GoogleAuthProvider();
 
 import { HomePage } from '../pages/home/home';
 // import { ListPage } from '../pages/list/list';
@@ -9,6 +19,7 @@ import { HomePage } from '../pages/home/home';
 // Mes pages
 import { CellulePage } from '../pages/cellule/cellule';
 import { Discussion } from '../pages/discussion/discussion';
+import { Login } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +31,9 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  user: Observable<firebase.User>;
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController, public afAuth: AngularFireAuth) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -30,6 +43,7 @@ export class MyApp {
       { title: 'Cellules', component: CellulePage },
       { title: 'Nos Echanges', component: Discussion }
     ];
+    this.user = this.afAuth.authState;
 
   }
 
@@ -48,10 +62,18 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
+  loginModal() {
+    // Function of login
+    let profileModal = this.modalCtrl.create(Login);
+    profileModal.present();
+  }
+
   gotoHome() {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    console.log('test');
+    // Direction to home page
     this.nav.setRoot(HomePage);
   }
+
+  // logout() {
+  //   this.afAuth.auth.signOut();
+  // }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { CellulePage } from '../pages/cellule/cellule';
 import { Discussion } from '../pages/discussion/discussion';
 import { VoirplusPage } from '../pages/voirplus/voirplus';
+import { Login } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -35,13 +37,15 @@ export const firebaseConfig = {
     ListPage,
     CellulePage,
     Discussion,
-    VoirplusPage
+    VoirplusPage,
+    Login
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +54,8 @@ export const firebaseConfig = {
     ListPage,
     CellulePage,
     Discussion,
-    VoirplusPage
+    VoirplusPage,
+    Login
   ],
   providers: [
     StatusBar,

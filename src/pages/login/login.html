@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+
+    <button ion-button icon-only menuToggle (click)="modalhide()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
+    <ion-title>
+      Connexion
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content overflow-scroll="false" text-center padding>
+
+  <h2>
+    Connectez-vous avec votre compte Google
+  </h2>
+  <img src="./assets/img/google-logo.png" style="width:100px!important; text-align:text-center;">
+  <p>
+    <span class="error" *ngIf="error">{{ error }}</span>
+  </p>
+  <ion-row>
+    <ion-col>
+      <button ion-button block icon-left clear center text-center (click)="loginGoogle()">
+        <ion-icon ios="ios-browsers" md="md-browsers"></ion-icon>
+        <div>Connexion</div>
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
