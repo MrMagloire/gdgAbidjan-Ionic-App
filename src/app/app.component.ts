@@ -18,7 +18,7 @@ import { HomePage } from '../pages/home/home';
 
 // Mes pages
 import { CellulePage } from '../pages/cellule/cellule';
-import { Discussion } from '../pages/discussion/discussion';
+// import { Discussion } from '../pages/discussion/discussion';
 import { Login } from '../pages/login/login';
 
 @Component({
@@ -40,8 +40,8 @@ export class MyApp {
     this.pages = [
       { title: 'Accueil', component: HomePage },
       // { title: 'List', component: ListPage },
-      { title: 'Cellules', component: CellulePage },
-      { title: 'Nos Echanges', component: Discussion }
+      { title: 'Cellules', component: CellulePage }
+      // { title: 'Nos Echanges', component: Discussion }
     ];
     this.user = this.afAuth.authState;
 

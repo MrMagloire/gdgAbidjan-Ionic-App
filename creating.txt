@@ -2,3 +2,6 @@ npm install -g ionic cordova typescript
 https://www.youtube.com/watch?v=bAqAuegNoD4
 # creer une page
 ionic g page pagename
+
+etat de la connexion
+ionic plugin add cordova-plugin-network-information

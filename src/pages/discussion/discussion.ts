@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 // Jquery integration
 import * as $ from 'jquery';
 
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+
+import { HomePage } from '../../pages/home/home';
 
 // Import the AF2 Module
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -43,9 +45,11 @@ export class Discussion {
 
   }
 
-  // transform(v: string) : SafeHtml {
-  //     return this._sanitizer.bypassSecurityTrustHtml(v);
-  // }
+  GoBack(){
+    console.log('click');
+      // That's right, we're pushing to ourselves!
+    this.navCtrl.pop(HomePage);
+  }
   transform() {
       return '';
   }
