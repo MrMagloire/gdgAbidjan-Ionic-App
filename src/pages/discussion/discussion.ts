@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 // Jquery integration
 import * as $ from 'jquery';
@@ -19,29 +19,14 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class Discussion {
 
   messages: FirebaseListObservable<any>;
-  btn = $('button');
-  wrap = $('.wrapper');
-  input = $('input.message');
-  usernameInput = $('input.username');
+  user: any;
 
-  constructor(public navCtrl: NavController, db: AngularFireDatabase, private _sanitizer: DomSanitizer) {
+  constructor(public navCtrl: NavController, db: AngularFireDatabase, public navParams: NavParams) {
     // relative URL, uses the database url provided in bootstrap
     this.messages = db.list('/messages');
-
-    // this.input = this.input.replace(/<script[^>]*?>.*?<\/script>/gi, '').
-    //        replace(/<[\/\!]*?[^<>]*?>/gi, '').
-    //        replace(/<style[^>]*?>.*?<\/style>/gi, '').
-    //        replace(/<![\s\S]*?--[ \t\n\r]*>/gi, '');
-
-    // this.usernameInput.on('keyup', function(e) {
-    //   if (e.keyCode === 13 && this.usernameInput.val().length > 0) {
-    //     var getTxt = this.usernameInput.val();
-    //     this.user.push(getTxt);
-    //     this.usernameInput.val('');
-    //     $('.initModal').css('display', 'none');
-    //     console.log(this.user);
-    //   }
-    // });
+    // user
+    this.user = navParams.get('user');
+    this.user.name = this.user.email;
 
   }
 

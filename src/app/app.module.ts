@@ -20,6 +20,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+// network connection
+import { Network } from '@ionic-native/network';
+import { ConnectivityService } from '../providers/connectivity-service';
+
 // AF2 Settings
 export const firebaseConfig = {
   apiKey: "AIzaSyDirdyhBk1xhsGx6qgHMn_ao2E9ASlcUeA",
@@ -60,7 +64,9 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Network,
+    ConnectivityService
   ]
 })
 export class AppModule {}

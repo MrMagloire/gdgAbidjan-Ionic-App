@@ -28,9 +28,10 @@
   </ion-list>
   <button ion-button (click)="transform()" id="button2">Dis bonjour</button>
   <ul>
-    <!--<li class="text" *ngFor="let item of messages | async">
-      {{item.$value}}
+    <!--<li class="text" *ngFor="let info of user | async">
+      {{info.$value}}
     </li>-->
   </ul>
+  {{user.email}} -- {{user.displayName}}
 
 </ion-content>
