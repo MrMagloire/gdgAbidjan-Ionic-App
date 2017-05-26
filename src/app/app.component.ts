@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, ModalController } from 'ionic-angular';
+import { Nav, Platform, ModalController, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -33,7 +33,7 @@ export class MyApp {
 
   user: Observable<firebase.User>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController, public afAuth: AngularFireAuth) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController, public afAuth: AngularFireAuth, private alertCtrl: AlertController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -71,6 +71,36 @@ export class MyApp {
   gotoHome() {
     // Direction to home page
     this.nav.setRoot(HomePage);
+  }
+
+  ExitApp() {
+    // exit app
+    console.log('Exit');
+    this.platform.exitApp();
+  }
+
+  exitAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Humm ...',
+      message: 'Voulez vous nous quitter ... ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            console.log('Yes clicked');
+            this.ExitApp();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   // logout() {

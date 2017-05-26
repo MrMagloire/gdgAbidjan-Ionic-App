@@ -9,11 +9,25 @@
       Nos Echanges
     </ion-title>
 
+    <ion-buttons end>
+      <img src="{{user.photoURL}}" style="width:40px!important; text-align:text-center; margin-right:15px">
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
 
 <ion-content overflow-scroll="false" text-center padding>
+
+  <ion-fab bottom right edge style="margin-bottom:50px;">
+    <button ion-fab mini><ion-icon name="arrow-dropup"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab (click)="launch('https://www.facebook.com/gdgabidjan')"><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab (click)="launch('https://twitter.com/gdgabidjan')"><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab (click)="launch('https://plus.google.com/+GdgabidjanCi')"><ion-icon name="logo-googleplus"></ion-icon></button>
+      <button ion-fab (click)="GoBack()"><ion-icon name="log-out"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 
   <ion-row class="wrapper">
   </ion-row>
@@ -23,15 +37,24 @@
   <ion-list>
     <ion-item class="initModal">
       <ion-label fixed>Username</ion-label>
-      <ion-input type="text" value="" (keypress)="transform()" id="username"></ion-input>
+      <ion-input type="text" value="" id="username"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button (click)="transform()" id="button2">Dis bonjour</button>
+  <button ion-button id="button2">Dis bonjour</button>
   <ul>
     <!--<li class="text" *ngFor="let info of user | async">
       {{info.$value}}
     </li>-->
   </ul>
-  {{user.email}} -- {{user.displayName}}
+  <!--{{user.email}} {{user.displayName}}-->
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <ion-label color="primary" floating>Votre message 😉</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+    <button ion-button color="secondary" round icon-left item-right>Envoyer <ion-icon name="send"></ion-icon> </button>
+  </ion-toolbar>
+</ion-footer>

@@ -46,6 +46,10 @@ export class Login {
         }).catch(
           (err) => {
           this.error = err;
+          if (this.error) {
+            this.reloadAlert();
+            this.viewCtrl.dismiss();
+          }
         });
     }
     else{
@@ -60,7 +64,7 @@ export class Login {
         if(typeof google == "undefined"){
           this.loginGoogle();
         }
-      }, 2000);
+      }, 5000);
     };
     document.addEventListener('online', onOnline, false);
 
@@ -74,6 +78,15 @@ export class Login {
     let alert = this.alertCtrl.create({
       title: 'Connexion',
       subTitle: 'Verifier votre connexion internet',
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
+  reloadAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Connexion',
+      subTitle: 'Verifier votre connexion internet et ressayer ...',
       buttons: ['Ok']
     });
     alert.present();
