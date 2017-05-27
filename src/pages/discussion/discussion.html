@@ -28,24 +28,7 @@
       <button ion-fab (click)="GoBack()"><ion-icon name="log-out"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
-
-  <ion-row class="wrapper">
-  </ion-row>
-
-  <ion-input class="message" type="text" value="" placeholder="Votre message" ng-bind-html="transform()"></ion-input>
-
-  <ion-list>
-    <ion-item class="initModal">
-      <ion-label fixed>Username</ion-label>
-      <ion-input type="text" value="" id="username"></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button id="button2">Dis bonjour</button>
-  <ul>
-    <!--<li class="text" *ngFor="let info of user | async">
-      {{info.$value}}
-    </li>-->
-  </ul>
+  
   <!--{{user.email}} {{user.displayName}}-->
 
 </ion-content>
@@ -54,7 +37,8 @@
     <ion-item>
       <ion-label color="primary" floating>Votre message 😉</ion-label>
       <ion-textarea type="text"></ion-textarea>
+      <button ion-button color="secondary" round icon-left item-right bottom>Envoyer <ion-icon name="send"></ion-icon> </button>
     </ion-item>
-    <button ion-button color="secondary" round icon-left item-right>Envoyer <ion-icon name="send"></ion-icon> </button>
+    <!--<button ion-button color="secondary" round icon-left item-right>Envoyer <ion-icon name="send"></ion-icon> </button>-->
   </ion-toolbar>
 </ion-footer>

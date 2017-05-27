@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+
 // browser for external link
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
@@ -22,7 +24,7 @@ export class Discussion {
   messages: FirebaseListObservable<any>;
   user: any;
 
-  constructor(public navCtrl: NavController, db: AngularFireDatabase, public navParams: NavParams, public loadingCtrl: LoadingController, private iab: InAppBrowser) {
+  constructor(public navCtrl: NavController, db: AngularFireDatabase, public navParams: NavParams, public loadingCtrl: LoadingController, private iab: InAppBrowser, public afAuth: AngularFireAuth) {
     // relative URL, uses the database url provided in bootstrap
     this.messages = db.list('/messages');
     // user
@@ -35,6 +37,7 @@ export class Discussion {
   GoBack(){
     console.log('click');
       // That's right, we're pushing to ourselves!
+      this.afAuth.auth.signOut();
     this.navCtrl.pop(HomePage);
   }
 
