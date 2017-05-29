@@ -28,6 +28,21 @@
       <button ion-fab (click)="GoBack()"><ion-icon name="log-out"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
+  <ion-list no-lines>
+    <ion-card *ngFor="let message of messages | async">
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="./assets/img/profile_placeholder.png">
+            </ion-avatar>
+            <h2>{{message.text}}</h2>
+            <p>{{message.name}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
   
   <!--{{user.email}} {{user.displayName}}-->
 
@@ -36,8 +51,8 @@
   <ion-toolbar>
     <ion-item>
       <ion-label color="primary" floating>Votre message 😉</ion-label>
-      <ion-textarea type="text"></ion-textarea>
-      <button ion-button color="secondary" round icon-left item-right bottom>Envoyer <ion-icon name="send"></ion-icon> </button>
+      <ion-textarea type="text" id="messageToSend" value="messageToSend" [(ngModel)]="messageToSend"></ion-textarea>
+      <button ion-button color="secondary" round icon-left item-right bottom (click)="sendMessages()">Envoyer <ion-icon name="send"></ion-icon> </button>
     </ion-item>
     <!--<button ion-button color="secondary" round icon-left item-right>Envoyer <ion-icon name="send"></ion-icon> </button>-->
   </ion-toolbar>

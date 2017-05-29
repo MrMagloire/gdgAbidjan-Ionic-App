@@ -23,10 +23,11 @@ export class Discussion {
 
   messages: FirebaseListObservable<any>;
   user: any;
+  messageToSend: any;
 
-  constructor(public navCtrl: NavController, db: AngularFireDatabase, public navParams: NavParams, public loadingCtrl: LoadingController, private iab: InAppBrowser, public afAuth: AngularFireAuth) {
-    // relative URL, uses the database url provided in bootstrap
-    this.messages = db.list('/messages');
+  constructor(public navCtrl: NavController, public db: AngularFireDatabase, public navParams: NavParams, public loadingCtrl: LoadingController, private iab: InAppBrowser, public afAuthd: AngularFireAuth) {
+    this.setMessages();
+    this.messageToSend = "";
     // user
     this.user = navParams.get('user');
     this.user.name = this.user.email;
@@ -37,8 +38,8 @@ export class Discussion {
   GoBack(){
     console.log('click');
       // That's right, we're pushing to ourselves!
-      this.afAuth.auth.signOut();
-    this.navCtrl.pop(HomePage);
+      this.afAuthd.auth.signOut();
+      this.navCtrl.pop(HomePage);
   }
 
   presentLoading() {
@@ -51,6 +52,25 @@ export class Discussion {
 
   launch(url) {
     this.iab.create(url,'_blank');
+  }
+
+  setMessages() {
+    // relative URL, uses the database url provided in bootstrap
+    this.messages = this.db.list('/messages',
+    {
+      query: {
+        limitToLast: 12,
+        orderByKey: true
+      }
+    });
+  }
+
+  sendMessages() {
+    // relative URL, uses the database url provided in bootstrap
+    this.messages.push({
+      name: this.user.displayName,
+      text : this.messageToSend
+    });
   }
 
 }
