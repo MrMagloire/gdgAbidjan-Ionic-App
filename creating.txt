@@ -5,3 +5,16 @@ ionic g page pagename
 
 etat de la connexion
 ionic plugin add cordova-plugin-network-information
+
+
+subscribe() {
+      this.user.subscribe((auth) => {
+          if(auth) {
+              // console.log(this.userinfo.currentUser);
+              this.viewCtrl.dismiss();
+              this.navCtrl.push(
+              Discussion, { user: this.userinfo.currentUser }
+              );
+          }
+      });
+    }

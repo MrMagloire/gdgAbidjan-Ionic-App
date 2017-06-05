@@ -21,11 +21,20 @@ export class Login {
 
   user: Observable<firebase.User>;
   error: any;
+  userinfo: any;
 
   constructor(public viewCtrl: ViewController, public afAuth: AngularFireAuth, public navCtrl: NavController, private alertCtrl: AlertController, public network: Network, public connectivityService: ConnectivityService) {
     
     this.user = afAuth.authState;
-    // this.loginGoogle();
+    this.userinfo = firebase.auth();
+    if (this.userinfo.currentUser) {
+      console.log('cnx');
+      console.log(this.userinfo.currentUser);
+      this.viewCtrl.dismiss();
+      this.navCtrl.push(
+        Discussion, { user: this.userinfo.currentUser }
+      );
+    }
 
   }
 

@@ -43,10 +43,14 @@ export class Discussion implements AfterViewChecked {
   }
 
   GoBack(){
-    console.log('click');
-      // That's right, we're pushing to ourselves!
-      this.afAuthd.auth.signOut();
-      this.navCtrl.pop(HomePage);
+    console.log('Back');
+    this.navCtrl.pop(HomePage);
+  }
+
+  Loggout(){
+    console.log('Logout');
+    this.navCtrl.pop(HomePage);
+    this.afAuthd.auth.signOut();
   }
 
   presentLoading() {
@@ -73,7 +77,7 @@ export class Discussion implements AfterViewChecked {
     this.messages = this.db.list('/messages',
     {
       query: {
-        limitToLast: 12,
+        limitToLast: 15,
         orderByKey: true
       }
     });
