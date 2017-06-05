@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewChecked } from '@angular/core';
 import { Content } from 'ionic-angular';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
@@ -20,8 +20,12 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   templateUrl: 'discussion.html',
 })
 
-export class Discussion {
+export class Discussion implements AfterViewChecked {
 
+  ngAfterViewChecked() {
+    console.log('ngafterview');
+    this.scroll();        
+  }
   @ViewChild(Content) content: Content;
 
   messages: FirebaseListObservable<any>;
@@ -89,13 +93,13 @@ export class Discussion {
     this.shortLoading();
     this.setMessages();
     this.messageToSend = "";
-    // this.scroll();
   }
 
   scroll() {
     // set the scrollLeft to 0px, and scrollTop to 500px
     // the scroll duration should take 200ms
-    this.content.scrollToBottom();
+    console.log('scrolling');
+    this.content.scrollToBottom(2000);
   }
 
 }
