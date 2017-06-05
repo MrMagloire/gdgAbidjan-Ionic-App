@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Content } from 'ionic-angular';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -21,6 +22,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 export class Discussion {
 
+  @ViewChild(Content) content: Content;
+
   messages: FirebaseListObservable<any>;
   user: any;
   messageToSend: any;
@@ -31,8 +34,8 @@ export class Discussion {
     // user
     this.user = navParams.get('user');
     this.user.name = this.user.email;
-
     this.presentLoading();
+    // this.content.scrollToBottom();
   }
 
   GoBack(){
@@ -46,6 +49,13 @@ export class Discussion {
     let loader = this.loadingCtrl.create({
       content: "Patientez SVP ...",
       duration: 3000
+    });
+    loader.present();
+  }
+  shortLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "📲🕐🕑",
+      duration: 2000
     });
     loader.present();
   }
@@ -69,8 +79,23 @@ export class Discussion {
     // relative URL, uses the database url provided in bootstrap
     this.messages.push({
       name: this.user.displayName,
-      text : this.messageToSend
+      text : this.messageToSend,
+      photoUrl: this.user.photoURL || './assets/img/profile_placeholder.png'
     });
+    this.refresh();
+  }
+  refresh() {
+    this.messageToSend = " ";
+    this.shortLoading();
+    this.setMessages();
+    this.messageToSend = "";
+    // this.scroll();
+  }
+
+  scroll() {
+    // set the scrollLeft to 0px, and scrollTop to 500px
+    // the scroll duration should take 200ms
+    this.content.scrollToBottom();
   }
 
 }

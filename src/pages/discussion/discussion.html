@@ -18,7 +18,7 @@
 
 
 <ion-content overflow-scroll="false" text-center padding>
-
+  <button (click)="scroll()"><ion-icon name="arrow-down"></ion-icon></button>
   <ion-fab bottom right edge style="margin-bottom:50px;">
     <button ion-fab mini><ion-icon name="arrow-dropup"></ion-icon></button>
     <ion-fab-list side="top">
@@ -30,11 +30,11 @@
   </ion-fab>
   <ion-list no-lines>
     <ion-card *ngFor="let message of messages | async">
-      <ion-card-content>
+      <ion-card-content id="message">
         <ion-list>
           <ion-item>
             <ion-avatar item-left>
-              <img src="./assets/img/profile_placeholder.png">
+              <img src="{{message.photoUrl}}">
             </ion-avatar>
             <h2>{{message.text}}</h2>
             <p>{{message.name}}</p>
@@ -45,14 +45,13 @@
   </ion-list>
   
   <!--{{user.email}} {{user.displayName}}-->
-
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <ion-item>
       <ion-label color="primary" floating>Votre message 😉</ion-label>
       <ion-textarea type="text" id="messageToSend" value="messageToSend" [(ngModel)]="messageToSend"></ion-textarea>
-      <button ion-button color="secondary" round icon-left item-right bottom (click)="sendMessages()">Envoyer <ion-icon name="send"></ion-icon> </button>
+      <button id="submit" ion-button color="secondary" round icon-left item-right bottom (click)="sendMessages()">Envoyer <ion-icon name="send"></ion-icon> </button>
     </ion-item>
     <!--<button ion-button color="secondary" round icon-left item-right>Envoyer <ion-icon name="send"></ion-icon> </button>-->
   </ion-toolbar>
