@@ -20,7 +20,7 @@ import { HomePage } from '../pages/home/home';
 import { CellulePage } from '../pages/cellule/cellule';
 // import { Discussion } from '../pages/discussion/discussion';
 import { Login } from '../pages/login/login';
-import { Event } from '../pages/event/event';
+import { EventPage } from '../pages/event/event';
 
 @Component({
   templateUrl: 'app.html'
@@ -43,7 +43,7 @@ export class MyApp {
       // { title: 'List', component: ListPage },
       { title: 'Cellules', component: CellulePage },
       // { title: 'Nos Echanges', component: Discussion }
-      { title: 'Events', component: Event }
+      { title: 'Events', component: EventPage }
     ];
     this.user = this.afAuth.authState;
 

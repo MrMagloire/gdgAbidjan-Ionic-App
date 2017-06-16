@@ -12,6 +12,7 @@ import { CellulePage } from '../pages/cellule/cellule';
 import { Discussion } from '../pages/discussion/discussion';
 import { VoirplusPage } from '../pages/voirplus/voirplus';
 import { Login } from '../pages/login/login';
+import { EventPage } from '../pages/event/event';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +44,8 @@ export const firebaseConfig = {
     CellulePage,
     Discussion,
     VoirplusPage,
-    Login
+    Login,
+    EventPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ export const firebaseConfig = {
     CellulePage,
     Discussion,
     VoirplusPage,
-    Login
+    Login,
+    EventPage
   ],
   providers: [
     StatusBar,
