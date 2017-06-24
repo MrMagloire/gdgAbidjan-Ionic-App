@@ -5,6 +5,8 @@ ionic g page pagename
 
 etat de la connexion
 ionic plugin add cordova-plugin-network-information
+cordova plugin add cordova:cordova-plugin-inappbrowser@1.0.1
+https://firebase.google.com/docs/auth/web/cordova
 
 
 subscribe() {
@@ -18,3 +20,8 @@ subscribe() {
           }
       });
     }
+
+
+
+
+[ngClass]="{'class1 class2' : (message.name == user.displayName), 'class3 class4':(message.name != user.displayName)}"

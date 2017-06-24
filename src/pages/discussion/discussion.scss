@@ -1,3 +1,12 @@
 page-discussion {
-
+    .me{
+        float:right;
+        text-align: right;
+        background: lightgrey;
+    }
+    .others{
+        float:left;
+        text-align: left;
+        background: aliceblue;
+    }
 }

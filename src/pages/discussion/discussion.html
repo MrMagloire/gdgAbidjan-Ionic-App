@@ -28,18 +28,17 @@
     </ion-fab-list>
   </ion-fab>
   <ion-list no-lines>
-    <ion-card *ngFor="let message of messages | async">
-      <ion-card-content id="message">
+    <ion-card *ngFor="let message of messages | async"  [ngClass]="{'me' : (message.name == user.displayName), 'others':(message.name != user.displayName)}">
         <ion-list>
           <ion-item>
             <ion-avatar item-left>
               <img src="{{message.photoUrl}}">
             </ion-avatar>
-            <h2>{{message.text}}</h2>
+            <!--<p>{{message.text}}</p>-->
             <p>{{message.name}}</p>
           </ion-item>
         </ion-list>
-      </ion-card-content>
+        <p margin>{{message.text}}</p>
     </ion-card>
   </ion-list>
   

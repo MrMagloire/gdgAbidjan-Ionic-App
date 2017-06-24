@@ -22,6 +22,18 @@
   <p>
     <span class="error" *ngIf="error">{{ error }}</span>
   </p>
+  <ion-card *ngIf="userinfo.currentUser" (click)="loginGoogle()">
+      <ion-list *ngIf="userinfo.currentUser">
+        <ion-item *ngIf="userinfo.currentUser">
+          <ion-avatar item-left *ngIf="userinfo.currentUser">
+            <img *ngIf="userinfo.currentUser" src="{{userinfoProfil.photoURL}}">
+          </ion-avatar>
+          <img *ngIf="userinfo.currentUser" src="./assets/img/googlesearch.gif" style="width:100px!important; text-align:text-center;">
+          <p *ngIf="userinfo.currentUser">{{userinfoProfil.displayName}}</p>
+        </ion-item>
+      </ion-list>
+      <p margin *ngIf="userinfo.currentUser">Google a toi ! Google de te revoir </p>
+  </ion-card>
   <ion-row>
     <ion-col>
       <button ion-button block icon-left clear center text-center (click)="loginGoogle()">

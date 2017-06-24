@@ -3,7 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+// import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 // Network connexion
 import { Network } from '@ionic-native/network';
@@ -17,12 +17,14 @@ declare var meetup;
 export class EventPage {
 
   MeetupEvents: any;
-  constructor(public navCtrl: NavController, public http: Http, private iab: InAppBrowser, private alertCtrl: AlertController, public network: Network, public connectivityService: ConnectivityService) {
+  constructor(public navCtrl: NavController, public http: Http,
+    // private iab: InAppBrowser,
+    private alertCtrl: AlertController, public network: Network, public connectivityService: ConnectivityService) {
     this.MeetupEvents = [];
     this.loadEvent();
   }
   launch(url) {
-    this.iab.create(url,'_blank');
+    //this.iab.create(url,'_blank');
   }
 
   loadEvent() {
