@@ -5,7 +5,7 @@ import { NavController, NavParams, LoadingController, AlertController } from 'io
 import { AngularFireAuth } from 'angularfire2/auth';
 
 // browser for external link
-// import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 // Network connexion
 import { Network } from '@ionic-native/network';
@@ -39,7 +39,7 @@ export class Discussion {
   user: any;
   messageToSend: any;
 
-  constructor(public navCtrl: NavController, public db: AngularFireDatabase, public navParams: NavParams, public loadingCtrl: LoadingController, public afAuthd: AngularFireAuth, public network: Network, public connectivityService: ConnectivityService, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public db: AngularFireDatabase, public navParams: NavParams, public loadingCtrl: LoadingController, public afAuthd: AngularFireAuth, public network: Network, public connectivityService: ConnectivityService, private alertCtrl: AlertController, public iab : InAppBrowser) {
     this.setMessages();
     this.messageToSend = "";
     // user
@@ -75,7 +75,7 @@ export class Discussion {
   }
 
   launch(url) {
-    //this.iab.create(url,'_blank');
+    this.iab.create(url,'_blank');
   }
 
   setMessages() {

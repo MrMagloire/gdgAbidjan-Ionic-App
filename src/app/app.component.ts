@@ -4,14 +4,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Firebase Auth
-// import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-// import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
-// Creation d'une varible pour auth google
-// var provider = new firebase.auth.GoogleAuthProvider();
+// browser for external link
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { HomePage } from '../pages/home/home';
 // import { ListPage } from '../pages/list/list';
@@ -34,7 +32,7 @@ export class MyApp {
 
   user: Observable<firebase.User>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController, public afAuth: AngularFireAuth, private alertCtrl: AlertController) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController, public afAuth: AngularFireAuth, private alertCtrl: AlertController, public inab : InAppBrowser) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -83,7 +81,7 @@ export class MyApp {
 
   exitAlert() {
     let alert = this.alertCtrl.create({
-      title: 'Humm ...',
+      title: 'Humm ... GooOOoogle ',
       message: 'Voulez vous nous quitter ... ?',
       buttons: [
         {
@@ -105,7 +103,8 @@ export class MyApp {
     alert.present();
   }
 
-  // logout() {
-  //   this.afAuth.auth.signOut();
-  // }
+  myPage(url){
+    this.inab.create(url,'_blank');
+  }
+
 }
