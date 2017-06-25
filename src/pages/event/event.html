@@ -37,9 +37,14 @@
           </button>
         </ion-col>
       </ion-row>
+      <input type="checkbox" ng-model="checked" ng-init="checked=true" hidden />
     </ion-card>
     <br/><br/><br/>
+      <ion-list ng-hide="checked">
+        <p text-center primary margin> Il n'y a pas d'event pour le moment. Rester connecté !! Google to you.</p>
+      </ion-list>
     <img src="./assets/img/googletech.png">
   </ion-list>
+  
 
 </ion-content>
