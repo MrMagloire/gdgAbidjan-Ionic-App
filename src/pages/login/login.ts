@@ -26,7 +26,6 @@ export class Login {
   provider: any;
 
   constructor(public viewCtrl: ViewController, public afAuth: AngularFireAuth, public navCtrl: NavController, private alertCtrl: AlertController, public network: Network, public connectivityService: ConnectivityService) {
-    
     this.user = afAuth.authState;
     if(firebase.auth()){
       this.userinfo = firebase.auth();
@@ -34,11 +33,7 @@ export class Login {
     if (this.userinfo.currentUser) {
       console.log(this.userinfo.currentUser);
       this.userinfoProfil = this.userinfo.currentUser;
-      console.log('cnx');
-      // this.viewCtrl.dismiss();
-      // this.navCtrl.push(
-      //   Discussion, { user: this.userinfo.currentUser }
-      // );
+      //console.log('cnx');
     }
 
   }
@@ -55,11 +50,12 @@ export class Login {
         console.log("online");
         this.provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(this.provider).then(function() {
-          console.log("SignIn");
+          //console.log("SignIn");
           firebase.auth().getRedirectResult().then(function(result) {
-            console.log('redirect');
-            this.userinfo = result.user;
-            this.userinfoProfil = result.user;
+            //console.log('redirect');
+            // this.userinfo = firebase.auth();
+            // this.userinfoProfil = this.userinfo.currentUser;
+            location.reload();
           });
         });
       }
